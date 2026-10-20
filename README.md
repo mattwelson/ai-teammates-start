@@ -19,3 +19,10 @@ To use the components in your app, import them as follows:
 ```tsx
 import { Button } from "@/components/ui/button";
 ```
+
+## Deploying to Render
+
+The repository includes a `render.yaml` Blueprint for a Node web service. Push
+the repository to a Git provider connected to Render, then create a new
+Blueprint in Render and select this repository. Render installs dependencies,
+builds the Nitro server, and starts it with `pnpm start`.
