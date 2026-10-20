@@ -1,6 +1,12 @@
 {
   "version": 1,
   "skills": {
+    "firecrawl": {
+      "source": "firecrawl/skills",
+      "sourceType": "github",
+      "skillPath": "skills/core/firecrawl/SKILL.md",
+      "computedHash": "a05c80c01a49d1c8154ec3e8b24045e6e4062e7c49b2d4dcb8537acb7ad4ed24"
+    },
     "migrate-radix-to-base": {
       "source": "shadcn/ui",
       "sourceType": "github",
