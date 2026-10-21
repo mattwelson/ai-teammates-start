@@ -29,10 +29,12 @@ publishable and secret keys with values from your Clerk Dashboard. The
 
 Environment variables are validated with `@t3-oss/env-core`: the Clerk
 publishable key is client-visible, while the secret key and auth route URLs are
-validated on the server only.
+validated on the server only. Neon provides `DATABASE_URL` for pooled app
+traffic and `DATABASE_URL_UNPOOLED` for Drizzle migrations.
 
-For Render, provide `VITE_CLERK_PUBLISHABLE_KEY` and `CLERK_SECRET_KEY` when
-creating the Blueprint or in the service's environment settings.
+For Render, provide `VITE_CLERK_PUBLISHABLE_KEY`, `CLERK_SECRET_KEY`,
+`DATABASE_URL`, and `DATABASE_URL_UNPOOLED` when creating the Blueprint or in
+the service's environment settings.
 
 ## Deploying to Render
 
