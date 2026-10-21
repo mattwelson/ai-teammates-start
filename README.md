@@ -27,6 +27,10 @@ publishable and secret keys with values from your Clerk Dashboard. The
 `/sign-in` and `/sign-up` routes host Clerk's prebuilt authentication flows;
 `/dashboard` is protected on the server.
 
+Environment variables are validated with `@t3-oss/env-core`: the Clerk
+publishable key is client-visible, while the secret key and auth route URLs are
+validated on the server only.
+
 For Render, provide `VITE_CLERK_PUBLISHABLE_KEY` and `CLERK_SECRET_KEY` when
 creating the Blueprint or in the service's environment settings.
 

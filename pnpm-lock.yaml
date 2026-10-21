@@ -23,6 +23,9 @@ importers:
       '@shadcn/react':
         specifier: ^0.3.1
         version: 0.3.1(@types/react@19.3.0)(react@19.3.1)
+      '@t3-oss/env-core':
+        specifier: ^0.13.11
+        version: 0.13.11(typescript@6.0.3)(zod@4.6.7)
       '@tailwindcss/vite':
         specifier: ^4
         version: 4.3.3(vite@8.3.4(@types/node@22.20.5)(jiti@2.7.0))
@@ -86,6 +89,9 @@ importers:
       tw-animate-css:
         specifier: ^1.4.0
         version: 1.4.0
+      zod:
+        specifier: ^4.6.7
+        version: 4.6.7
     devDependencies:
       '@tanstack/devtools-vite':
         specifier: latest
@@ -1080,6 +1086,23 @@ packages:
 
   '@swc/helpers@0.5.21':
     resolution: {integrity: sha512-jI/VAmtdjB/RnI8GTnokyX7Ug8c+g+ffD6QRLa6XQewtnGyukKkKSk3wLTM3b5cjt1jNh9x0jfVlagdN2gDKQg==}
+
+  '@t3-oss/env-core@0.13.11':
+    resolution: {integrity: sha512-sM7GYY+KL7H/Hl0BE0inWfk3nRHZOLhmVn7sHGxaZt9FAR6KqREXAE+6TqKfiavfXmpRxO/OZ2QgKRd+oiBYRQ==}
+    peerDependencies:
+      arktype: ^2.1.0
+      typescript: '>=5.0.0'
+      valibot: ^1.0.0-beta.7 || ^1.0.0
+      zod: ^3.24.0 || ^4.0.0
+    peerDependenciesMeta:
+      arktype:
+        optional: true
+      typescript:
+        optional: true
+      valibot:
+        optional: true
+      zod:
+        optional: true
 
   '@tailwindcss/node@4.3.3':
     resolution: {integrity: sha512-/T8IKEsf9VTU6tLjgC7+sv2mOPtQxzE2jMw7u4Tt40Tx+QSZxpzh95/H6cMKoja9XuW7iMdLJYBB0o9G1CaAgg==}
@@ -4933,6 +4956,11 @@ snapshots:
   '@swc/helpers@0.5.21':
     dependencies:
       tslib: 2.8.1
+
+  '@t3-oss/env-core@0.13.11(typescript@6.0.3)(zod@4.6.7)':
+    optionalDependencies:
+      typescript: 6.0.3
+      zod: 4.6.7
 
   '@tailwindcss/node@4.3.3':
     dependencies:

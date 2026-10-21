@@ -5,6 +5,7 @@ import { ClerkProvider } from "@clerk/tanstack-react-start"
 import { shadcn } from "@clerk/ui/themes"
 import { Toaster } from "@/components/ui/toast"
 import { TooltipProvider } from "@/components/ui/tooltip"
+import { env } from "@/env/client"
 
 import appCss from "../styles.css?url"
 
@@ -45,7 +46,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
-        <ClerkProvider appearance={{ theme: shadcn }}>
+        <ClerkProvider
+          publishableKey={env.VITE_CLERK_PUBLISHABLE_KEY}
+          appearance={{ theme: shadcn }}
+        >
           <TooltipProvider>
             <Toaster>{children}</Toaster>
           </TooltipProvider>

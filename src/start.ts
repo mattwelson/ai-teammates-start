@@ -1,5 +1,6 @@
 import { createCsrfMiddleware, createStart } from "@tanstack/react-start"
 import { clerkMiddleware } from "@clerk/tanstack-react-start/server"
+import "@/env/server"
 
 const csrfMiddleware = createCsrfMiddleware({
   filter: (context) => context.handlerType === "serverFn",
