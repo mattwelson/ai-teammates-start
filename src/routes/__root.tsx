@@ -1,15 +1,41 @@
-import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router"
-import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools"
-import { TanStackDevtools } from "@tanstack/react-devtools"
 import { ClerkProvider } from "@clerk/tanstack-react-start"
+import { auth } from "@clerk/tanstack-react-start/server"
 import { shadcn } from "@clerk/ui/themes"
+import { TanStackDevtools } from "@tanstack/react-devtools"
+import {
+  createRootRoute,
+  HeadContent,
+  redirect,
+  Scripts,
+} from "@tanstack/react-router"
+import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools"
+import { createServerFn } from "@tanstack/react-start"
 import { Toaster } from "@/components/ui/toast"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { env } from "@/env/client"
 
 import appCss from "../styles.css?url"
 
+const requireAuthentication = createServerFn({ method: "GET" }).handler(
+  async () => {
+    const { isAuthenticated } = await auth()
+
+    if (!isAuthenticated) {
+      throw redirect({ to: "/sign-in/$", params: { _splat: "" } })
+    }
+  }
+)
+
+function isPublicAuthRoute(pathname: string) {
+  return /^\/sign-(in|up)(\/|$)/.test(pathname)
+}
+
 export const Route = createRootRoute({
+  beforeLoad: async ({ location }) => {
+    if (!isPublicAuthRoute(location.pathname)) {
+      await requireAuthentication()
+    }
+  },
   head: () => ({
     meta: [
       {

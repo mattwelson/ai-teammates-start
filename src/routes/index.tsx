@@ -1,61 +1,50 @@
-import {
-  Show,
-  SignInButton,
-  SignUpButton,
-  UserButton,
-} from "@clerk/tanstack-react-start"
+import { createId } from "@paralleldrive/cuid2"
 import { createFileRoute } from "@tanstack/react-router"
+import { createServerFn } from "@tanstack/react-start"
+import { PlusIcon } from "lucide-react"
+import { ChatAvatar } from "@/components/chat-avatar"
 import { Button } from "@/components/ui/button"
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/ui/empty"
 
-export const Route = createFileRoute("/")({ component: App })
+const createAvatarSeed = createServerFn({ method: "GET" }).handler(() =>
+  createId()
+)
+
+export const Route = createFileRoute("/")({
+  loader: () => createAvatarSeed(),
+  component: App,
+})
 
 function App() {
+  const seed = Route.useLoaderData()
+
   return (
-    <main className="flex min-h-svh justify-center p-6">
-      <div className="flex w-full max-w-2xl flex-col gap-8">
-        <header className="flex items-center justify-between gap-4">
-          <a href="/" className="font-medium">
-            AI Teammates
-          </a>
-          <Show when="signed-out">
-            <div className="flex items-center gap-2">
-              <SignInButton mode="redirect">
-                <Button variant="ghost">Sign in</Button>
-              </SignInButton>
-              <SignUpButton mode="redirect">
-                <Button>Sign up</Button>
-              </SignUpButton>
-            </div>
-          </Show>
-          <Show when="signed-in">
-            <div className="flex items-center gap-3">
-              <a
-                href="/dashboard"
-                className="text-sm underline underline-offset-4"
-              >
-                Dashboard
-              </a>
-              <UserButton />
-            </div>
-          </Show>
-        </header>
-        <section className="flex flex-col gap-4 text-sm leading-relaxed">
-          <div className="flex flex-col gap-2">
-            <h1 className="font-semibold text-2xl tracking-tight">
-              Project ready!
-            </h1>
-            <p>
-              Authentication is powered by Clerk. Sign in or create an account
-              to get started.
-            </p>
-          </div>
-          <Show when="signed-in">
-            <a href="/dashboard" className="w-fit">
-              <Button>Open dashboard</Button>
-            </a>
-          </Show>
-        </section>
-      </div>
+    <main className="dark flex min-h-svh items-center justify-center bg-background p-6 text-foreground">
+      <Empty className="max-w-sm flex-none gap-4 p-0">
+        <EmptyHeader>
+          <EmptyMedia>
+            <ChatAvatar seed={seed} />
+          </EmptyMedia>
+          <EmptyTitle>Meet your first bot</EmptyTitle>
+          <EmptyDescription>
+            Every bot gets its own personality, memory, and face. Spin one up
+            and start the conversation.
+          </EmptyDescription>
+        </EmptyHeader>
+        <EmptyContent>
+          <Button size="sm" variant="secondary">
+            <PlusIcon data-icon="inline-start" />
+            Create a new bot
+          </Button>
+        </EmptyContent>
+      </Empty>
     </main>
   )
 }
