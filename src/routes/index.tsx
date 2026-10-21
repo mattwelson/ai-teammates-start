@@ -1,4 +1,9 @@
-import { Show, SignInButton, SignUpButton, UserButton } from "@clerk/tanstack-react-start"
+import {
+  Show,
+  SignInButton,
+  SignUpButton,
+  UserButton,
+} from "@clerk/tanstack-react-start"
 import { createFileRoute } from "@tanstack/react-router"
 import { Button } from "@/components/ui/button"
 
@@ -24,7 +29,10 @@ function App() {
           </Show>
           <Show when="signed-in">
             <div className="flex items-center gap-3">
-              <a href="/dashboard" className="text-sm underline underline-offset-4">
+              <a
+                href="/dashboard"
+                className="text-sm underline underline-offset-4"
+              >
                 Dashboard
               </a>
               <UserButton />
@@ -33,10 +41,12 @@ function App() {
         </header>
         <section className="flex flex-col gap-4 text-sm leading-relaxed">
           <div className="flex flex-col gap-2">
-            <h1 className="text-2xl font-semibold tracking-tight">Project ready!</h1>
+            <h1 className="font-semibold text-2xl tracking-tight">
+              Project ready!
+            </h1>
             <p>
-              Authentication is powered by Clerk. Sign in or create an account to
-              get started.
+              Authentication is powered by Clerk. Sign in or create an account
+              to get started.
             </p>
           </div>
           <Show when="signed-in">

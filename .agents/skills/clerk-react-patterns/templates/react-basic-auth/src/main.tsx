@@ -4,9 +4,9 @@ import App from "./App.tsx"
 import { ClerkProvider } from "@clerk/react"
 
 createRoot(document.getElementById("root")!).render(
-	<StrictMode>
-		<ClerkProvider>
-			<App />
-		</ClerkProvider>
-	</StrictMode>,
+  <StrictMode>
+    <ClerkProvider>
+      <App />
+    </ClerkProvider>
+  </StrictMode>
 )
