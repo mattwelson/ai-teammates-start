@@ -20,6 +20,16 @@ To use the components in your app, import them as follows:
 import { Button } from "@/components/ui/button";
 ```
 
+## Authentication
+
+Authentication uses Clerk. Copy `.env.example` to `.env`, then replace the
+publishable and secret keys with values from your Clerk Dashboard. The
+`/sign-in` and `/sign-up` routes host Clerk's prebuilt authentication flows;
+`/dashboard` is protected on the server.
+
+For Render, provide `VITE_CLERK_PUBLISHABLE_KEY` and `CLERK_SECRET_KEY` when
+creating the Blueprint or in the service's environment settings.
+
 ## Deploying to Render
 
 The repository includes a `render.yaml` Blueprint for a Node web service. Push

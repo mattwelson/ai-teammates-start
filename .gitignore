@@ -3,7 +3,9 @@ node_modules
 dist
 dist-ssr
 *.local
+.firecrawl/
 .env*
+!.env.example
 .nitro
 .tanstack
 .wrangler
